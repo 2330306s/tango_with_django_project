@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from rango.models import Category
-from rango.models import Page
+from rango.models import Page
+from django.http import HttpResponse
 
 
 # Create your views here.
-from django.http import HttpResponse
+def about(request):
+    return HttpResponse("Rango says here is the about page.")
+
 def index(request):
     # Query the database for a list of ALL categories currently stored.
     # Order the categories by no. likes in descending order.
@@ -36,9 +39,11 @@ def show_category(request, category_name_slug):
         context_dict['category'] = category
     except Category.DoesNotExist:
         # We get here if we didn't find the specified category.
-        # Don't do anything -
+        # Don't do anything -
+
         # the template will display the "no category" message for us.
         context_dict['category'] = None
         context_dict['pages'] = None
     # Go render the response and return it to the client.
-    return render(request, 'rango/category.html', context_dict)
+    return render(request, 'rango/category.html', context_dict)
+
