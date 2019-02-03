@@ -1,18 +1,13 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-<html>
-	<head>
-		<title>Rango</title>
-		<!-- CSS -->
-		<link rel="stylesheet" href="{% static "css/base.css" %}" />
-		<!-- JavaScript -->
-		<script src="{% static "js/jquery.js" %}"></script>
-	</head>
-	<body>
+{% block title_block %}
+	About
+{% endblock %}
+	{% block body_block %}
+		<p>visits: {{ visits }}</p>
 		<!-- Image -->
 		<img src="{% static "images/about.jpg" %}" alt="404">
 		This tutorial has been put together by y4tin
 		<img src="/media/cat.jpg" alt="404">
 		Cat pix
-		</body>
-</html>
+	{% endblock %}
