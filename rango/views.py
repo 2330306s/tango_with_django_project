@@ -70,7 +70,6 @@ def show_category(request, category_name_slug):
     # Go render the response and return it to the client.
     return render(request, 'rango/category.html', context_dict)
 
-@login_required
 def add_category(request):
     form = CategoryForm()
     # A HTTP POST?
@@ -95,7 +94,6 @@ def add_category(request):
     # Render the form with error messages (if any).
     return render(request, 'rango/add_category.html', {'form': form})
 
-@login_required
 def add_page(request, category_name_slug):
     try:
         category = Category.objects.get(slug=category_name_slug)
@@ -207,20 +205,7 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render(request, 'rango/login.html', {})
-
-@login_required
-def restricted(request):
-    return render(request,'rango/restricted.html',{})
-
-# Use the login_required() decorator to ensure only those logged in can
-# access the view.
-@login_required
-def user_logout(request):
-    # Since we know the user is logged in, we can now just log them out.
-    logout(request)
-    # Take the user back to the homepage.
-    return HttpResponseRedirect(reverse('index'))
-
+    
 # A helper method
 def get_server_side_cookie(request, cookie, default_val=None):
     val = request.session.get(cookie)
@@ -247,6 +232,21 @@ def visitor_cookie_handler(request):
         request.session['last_visit'] = last_visit_cookie
     # Update/set the visits cookie
     request.session['visits'] = visits
+
+
+
+@login_required
+def restricted(request):
+    return render(request,'rango/restricted.html',{})
+
+# Use the login_required() decorator to ensure only those logged in can
+# access the view.
+@login_required
+def user_logout(request):
+    # Since we know the user is logged in, we can now just log them out.
+    logout(request)
+    # Take the user back to the homepage.
+    return HttpResponseRedirect(reverse('index'))
 
 
 

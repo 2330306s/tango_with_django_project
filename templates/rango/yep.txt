@@ -1,0 +1,23 @@
+gdp = c + i + g
+
+income = gdp
+
+income = c + s + g
+
+savings investment identity i = s
+
+s = s national = s private + s govt
+
+nci = im + x
+
+gdp = c + i + g + (x-im)
+
+s national = gdp - c -g
+
+gdp = c + i + g + (x - im)
+i = (gdp - c - g) + (im + x)
+
+i = s national + nci
+i = s private + s govt + nci
+
+
