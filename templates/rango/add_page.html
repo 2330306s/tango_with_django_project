@@ -19,9 +19,9 @@
                    			{{ field }}
               			{% endfor %}
               			<input type="submit" name="submit" value="Add Page" />
-			{% else %}
-				<strong>A category by this name does not exist </strong>
-        		{% endif %}
+                {% else %}
+                        <strong>A category by this name does not exist </strong>
+                {% endif %}
         		</form>
       		</div>
 	{% endblock %}
